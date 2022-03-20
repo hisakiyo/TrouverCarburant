@@ -3,7 +3,7 @@ Trouvez le carburant le moins cher dans un rayon prédéfini
 
 ## Utilisation:
 ```
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 Changer les valeurs de la ligne 9 à 13
 ```
