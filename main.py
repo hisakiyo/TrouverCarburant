@@ -5,12 +5,11 @@ import json, xmltodict
 from geopy import distance
 
 
-# Gas URL 
 gas_url = 'https://donnees.roulez-eco.fr/opendata/instantane'
-lat = '50.938982'
-long = '1.869328'
-max_km = 40
-gas = 'Gazole'
+lat = '50.938982' # Votre latitude
+long = '1.869328' # Votre longitude
+max_km = 40 # Votre distance max en KM pour aller faire le plein
+gas = 'Gazole' # Type de carburant (eg. Gazole, E85, E10, SP98, SP95)
 
 
 def convert_xml_to_json(xml_file):
