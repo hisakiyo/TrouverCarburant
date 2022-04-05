@@ -131,6 +131,7 @@ def print_stations(stations):
             # Print the price
             print('\t', gas, ':', station[gas]['price'], '€', '(' + station[gas]['maj'] + ')')
             print('\t', '% d\'économie par rapport au plus cher', ':', round((1 - float(station[gas]['price']) / float(stations[0][gas]['price'])) * 100, 2), '%')
+            print('\t', 'Distance', ':', round(distance.distance((lat, long), (station['latitude'], station['longitude'])).km, 2), 'km')
 
 data = get_gas_stations(gas_url)
 data = filter_and_sort(data)
