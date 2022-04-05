@@ -4,13 +4,41 @@ import io
 import json, xmltodict
 from geopy import distance
 
-
 gas_url = 'https://donnees.roulez-eco.fr/opendata/instantane'
-lat = '50.938982' # Votre latitude
-long = '1.869328' # Votre longitude
-max_km = 40 # Votre distance max en KM pour aller faire le plein
-gas = 'Gazole' # Type de carburant (eg. Gazole, E85, E10, SP98, SP95)
 
+# Get coordinates with the city
+def get_coordinates(city):
+    # Get the coordinates
+    r = requests.get('https://api-adresse.data.gouv.fr/search/?q=' + city)
+    # If the request is successful
+    if r.status_code == 200:
+        # Check if there is coordinates in json
+        if r.json()['features'] != []:
+            # Get the coordinates
+            coordinates = r.json()['features'][0]['geometry']['coordinates']
+            # Return lat and long
+            return coordinates[1], coordinates[0]
+        else:
+            return None
+    else:
+        return None
+
+# Get the coordinates with the city
+city = input('Ville : ')
+if get_coordinates(city) != None:
+    lat, long = get_coordinates(city)
+else:
+    print('Ville non trouvée')
+    sys.exit()
+
+# Get the gas type
+gas = input('Type de carburant (eg. Gazole, E85, E10, SP98, SP95) : ')
+if gas not in ['Gazole', 'E85', 'E10', 'SP98', 'SP95']:
+    print('Le type de carburant n\'est pas valide')
+    sys.exit()
+
+# Get the max km
+max_km = float(input('Distance maximale (km) : '))
 
 def convert_xml_to_json(xml_file):
     # Convert the XML to JSON

@@ -5,7 +5,7 @@ Trouvez le carburant le moins cher dans un rayon prédéfini
 ```
 pip3 install -r requirements.txt
 ```
-Changer les valeurs de la ligne 9 à 13
+Lancer la commande et suivre les instructions
 ```
 python3 main.py
 ```
